@@ -6,7 +6,7 @@ import DayInfo from './components/DayInfo';
 import Forcast from './components/Forcast';
 import SearchBar from './components/SearchBar';
 import WeatherTemp from './components/WeatherTemp';
-import getFormattedData from './Service/WeatherData';
+import formatForecastWeather from './Service/WeatherData';
 
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
 
       toast.info("Fetching weather for " + message);
 
-      await getFormattedData({ ...query, units }).then((data) => {
+      await formatForecastWeather({ ...query, units }).then((data) => {
         toast.success(
           `Successfully fetched weather for ${data.name}, ${data.country}.`
         );

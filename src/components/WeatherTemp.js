@@ -4,25 +4,41 @@ import { WiHumidity } from 'react-icons/wi';
 import { BiWind } from 'react-icons/bi';
 import { BiSun } from 'react-icons/bi';
 import { GiSunset } from 'react-icons/gi';
+import { iconUrlFromCode } from '../Service/WeatherData';
 
-export default function WeatherTemp() {
+export default function WeatherTemp({
+  weather: {
+    details,
+    icon,
+    temp,
+    temp_min,
+    temp_max,
+    sunrise,
+    sunset,
+    speed,
+    humidity,
+    feels_like,
+    timezone,
+  }, 
+
+}) {
     return (
         <div>
             <div className="text-center py-6 text-xl text-cyan-300">
-                <p>Cloudy or something</p>
+                <p>{details}</p>
             </div>
 
             <div className="flex items-center justify-between text-white py-3">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSesGqhQaszlJe27qa9s_I__yD4mNcL6gDAq5lm-BXCy52jO5r17_sqIGdzHi_3KVWErCw&usqp=CAU" alt="" className="w-20 rounded-full" />
+                <img src={iconUrlFromCode(icon)} alt="" className="w-20 rounded-full" />
 
-                <p className="text-5xl font-bold">34&deg;</p>
+                <p className="text-5xl font-bold">{`${temp.toFixed()}`}</p>
 
                 <div className="flex flex-col space-y-2">
                     <div className="flex font-light text-sm items-center justify-center">
                        
                         <FaTemperatureLow size={18} className="mr-1" /> 
                         Real fell:
-                        <span className="font-medium ml-1">14&deg;</span>
+                        <span className="font-medium ml-1">{`${feels_like.toFixed()}`}</span>
                     </div>
 
                     <div className="flex font-light text-sm items-center justify-center">
