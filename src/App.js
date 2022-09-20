@@ -4,12 +4,13 @@ import DayInfo from './components/DayInfo';
 import Forcast from './components/Forcast';
 import SearchBar from './components/SearchBar';
 import WeatherTemp from './components/WeatherTemp';
-import getWeatherData from './Service/WeatherData';
+import getFormattedData from './Service/WeatherData';
+
 
 function App() {
 
   const fetchWeatherData = async () => {
-    const data = await getWeatherData("weather", { q: "london" });
+    const data = await getFormattedData({ q: "london" });
     console.log(data);
   }
   fetchWeatherData();
