@@ -6,6 +6,7 @@ import Forcast from './components/Forcast';
 import SearchBar from './components/SearchBar';
 import WeatherTemp from './components/WeatherTemp';
 import formatForecastWeather from './Service/WeatherData';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -35,16 +36,10 @@ function App() {
     fetchWeather();
   }, [query, units]);
 
-  const formatBackground = () => {
-    if (!weather) return "from-cyan-700 to-blue-700";
-    const threshold = units === "metric" ? 20 : 60;
-    if (weather.temp <= threshold) return "from-cyan-700 to-blue-700";
 
-    return "from-yellow-700 to-orange-700";
-  };
 
   return (
-    <div className={`mx-auto max-w-screen-md py-5 mt-5 px-32 bg-gradient-to-br ${formatBackground} shadow-xl shadow-gray-300`}>
+    <div className={`mx-auto max-w-screen-md py-5 mt-5 px-32 bg-gradient-to-br from-green-100 to to-blue-700 shadow-xl shadow-gray-300 `}>
       <ButtonsNav setQuery={setQuery} />
       <SearchBar setQuery={setQuery} units={units} setUnits={setUnits} />
 
@@ -57,10 +52,9 @@ function App() {
         </div>
       }
 
-
-      <ToastContainer autoClose={1000} theme={'colored'} />
+     <ToastContainer />
     </div >
-
+ 
   );
 }
 
