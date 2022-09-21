@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ButtonsNav() {
+function ButtonsNav({setQuery}) {
 
     const randomNum = () => Math.floor(Math.random() * 100)
 
@@ -35,6 +35,7 @@ function ButtonsNav() {
                 <button
                     key={city.id}
                     className="text-white text-lg font-medium"
+                    onClick={() => setQuery({ q: city.city })}
                 >
                     {city.city}
                 </button>
